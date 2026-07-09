@@ -1,0 +1,11 @@
+# 1. Initialize history.txt with your unique 8-digit Student ID (e.g., 20261234)
+echo "==================================================" > history.txt
+echo "[SECTION 1: HARDWARE FAULT SIGNATURE]" >> history.txt
+python3 fault_seed.py--id 20231000096 >> history.txt 2>&1
+# 2. Capture baseline system diagnostics
+echo-e "\n--- BASELINE CRASH LOG---" >> history.txt
+python3 avionics_bus.py >> history.txt 2>&1
+# 3. Save your initial baseline to GitHub
+git add history.txt hardware_config.json
+git commit-m "chore: initialize online codespace and baseline history log"
+git push origin main
